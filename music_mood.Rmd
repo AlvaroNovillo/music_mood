@@ -67,6 +67,12 @@ colors_in <- alpha(coul,0.4)
 
 #EDA
 
+Following the steps of [@data1], we will use a dataset^[1] of 686 classified songs into four emotions: energetic, happy, calm, and sad. We will then use various machine learning techniques to train a model that can classify the mood of a song based on specific
+
+parameters.
+
+Using data scraped from [Spotify](https://open.spotify.com/intl-es), we will create a tool to perform basic exploratory data analysis on the songs. We will then use our classification algorithm to categorise the songs.
+
 ADD CORRELATION MATRIX
 ADD EXPLANATION OF THE DATASET 
 ADD MODELS
@@ -76,7 +82,7 @@ ADD HISTOGRAMS
 ```{r}
 music_data <- read.csv(file = 'data_moods.csv', header=TRUE,sep = ',')
 
-music_data <- subset(music_data, select = c("name","artist", "album","id", "popularity", "danceability", "acousticness", "energy", "instrumentalness", "liveness", "valence", "loudness", "speechiness", "tempo","mood"))
+music_data <- subset(music_data, select = c("name","artist", "album","id", "danceability", "acousticness", "energy", "instrumentalness", "liveness", "valence", "loudness", "speechiness", "tempo","mood"))
 
 ```
 
@@ -92,7 +98,12 @@ h <- ggplot(data = data.frame(mood = names(mood_counts), count = as.numeric(mood
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
-h + scale_fill_manual(values=coul)
+h + scale_fill_manual(values=coul) + theme(legend.text = element_text(face = "italic"), legend.title = element_text(size = 12,face = "bold.italic", family = "Helvetica"),
+    panel.background = element_rect(fill = NA)) + theme(axis.title = element_text(family = "sans"),
+    axis.text = element_text(family = "sans"),
+    plot.title = element_text(family = "sans"),
+    legend.text = element_text(family = "sans"),
+    legend.title = element_text(family = "sans"))
 ```
 ```{r}
 # Load necessary libraries
@@ -131,7 +142,7 @@ legend(x=2, y=1, legend = rownames(averages), bty = "n", pch=20 , col=colors_in 
 #Methodolody
 
 ```{r}
-numeric_data <- subset(data, select = c( "popularity", "danceability", "acousticness", "energy", "instrumentalness", "liveness", "valence", "loudness", "speechiness", "tempo","mood"))
+numeric_data <- subset(music_data, select = c("danceability", "acousticness", "energy", "instrumentalness", "liveness", "valence", "loudness", "speechiness", "tempo","mood"))
 
 spl = createDataPartition(numeric_data$mood, p = 0.8, list = FALSE)  # 80% for training
 
@@ -157,6 +168,9 @@ print(confusion_matrix)
 
 ```
 
+
+
+[^1]: The dataset used to train our model can be found in [Kaggle](https://www.kaggle.com/datasets/musicblogger/spotify-music-data-to-identify-the-moods)
 <!--
 # References
 \setlength{\parindent}{-0.2in}

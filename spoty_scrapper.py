@@ -6,132 +6,95 @@ Created on Mon Feb 12 15:56:17 2024
 """
 
 import spotipy
-from spotipy.oauth2 import SpotifyClientCredentials #To access authorised Spotify data
+from spotipy.oauth2 import SpotifyClientCredentials
+import pandas as pd
+import time
+import numpy as np
 
+# Spotify credentials
 client_id= "93f9faed16c3424c84883c43cedc286d"
 client_secret= "ffaeec52b4424d2a87f2f2b7f9bee9ee"
 
+
+# Authenticate with Spotify API
 client_credentials_manager = SpotifyClientCredentials(client_id=client_id, client_secret=client_secret)
+sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
 
-sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager) #spotify object to access API
+# Function to retrieve audio features for a track
+def get_track_audio_features(track_uri):
+    features = sp.audio_features(track_uri)[0]
+    return {
+        "danceability": features["danceability"],
+        "acousticness": features["acousticness"],
+        "energy": features["energy"],
+        "instrumentalness": features["instrumentalness"],
+        "liveness": features["liveness"],
+        "valence": features["valence"],
+        "loudness": features["loudness"],
+        "speechiness": features["speechiness"],
+        "tempo": features["tempo"]
+    }
+
+# Function to retrieve information about an album
+def get_album_info(album_uri):
+    album_info = sp.album(album_uri)
+    return {
+        "album": album_info["name"]
+    }
+
+# Function to retrieve information about tracks in an album
+def get_tracks_info(item_uri, item_type):
+    tracks = []
+    if item_type == "album":
+        tracks_info = sp.album_tracks(item_uri)
+    elif item_type == "playlist":
+        tracks_info = sp.playlist_tracks(item_uri)
+    for track in tracks_info["items"]:
+        if item_type == "playlist":
+            track = track["track"]
+        track_features = get_track_audio_features(track["uri"])
+        track_info = {
+            "name": track["name"],
+            "id": track["id"],
+            **track_features
+        }
+        tracks.append(track_info)
+    return tracks
 
 
-name = "Flume" #chosen artist
+# Function to retrieve all albums and their tracks for a given artist
+def get_tracks(item_name):
+    tracks = []
+    # Check if item_name is an artist name or a playlist link
+    if "open.spotify.com/playlist/" in item_name:
+        playlist_id = item_name.split("playlist/")[-1].split("?")[0]
+        playlist_info = sp.playlist(playlist_id)
+        playlist_tracks = get_tracks_info(playlist_id, "playlist")
+        for track in playlist_tracks:
+            track["artist"] = playlist_info["owner"]["display_name"]
+            track["album"] = playlist_info["name"]
+        tracks.extend(playlist_tracks)
+    else:
+        artist_info = sp.search(item_name, type="artist")["artists"]["items"][0]
+        artist_albums = sp.artist_albums(artist_info["uri"], album_type="album")["items"]
+        for album in artist_albums:
+            album_info = get_album_info(album["uri"])
+            album_tracks = get_tracks_info(album["uri"],"album")
+            for track in album_tracks:
+                track["artist"] = item_name
+                track["album"] = album_info["album"]
+            tracks.extend(album_tracks)
+    return tracks
 
-result = sp.search(name) #search query
+# Main function to retrieve and compile data
+def main():
+    user_input = input("Enter an artist name or a playlist link: ")
+    all_tracks = get_tracks(user_input)
+    df = pd.DataFrame(all_tracks)
+    # Reorder columns
+    df = df[["name", "artist", "album", "id", "danceability", "acousticness", "energy", "instrumentalness", "liveness", "valence", "loudness", "speechiness", "tempo"]]
+    return df
 
-#Extract Artist's uri
-artist_uri = result['tracks']['items'][0]['artists'][0]['uri']
-
-
-#Pull all of the artist's albums
-sp_albums = sp.artist_albums(artist_uri, album_type='album')
-#Store artist's albums' names' and uris in separate lists
-album_names = []
-album_uris = []
-for i in range(len(sp_albums['items'])):
-    album_names.append(sp_albums['items'][i]['name'])
-    album_uris.append(sp_albums['items'][i]['uri'])
-    
-def albumSongs(uri):
-    album = uri #assign album uri to a_name
-    spotify_albums[album] = {} #Creates dictionary for that specific album
-    #Create keys-values of empty lists inside nested dictionary for album
-    spotify_albums[album]['album'] = [] #create empty list
-    spotify_albums[album]['track_number'] = []
-    spotify_albums[album]['id'] = []
-    spotify_albums[album]['name'] = []
-    spotify_albums[album]['uri'] = []
-    tracks = sp.album_tracks(album) #pull data on album tracks
-    for n in range(len(tracks['items'])): #for each song track
-            spotify_albums[album]['album'].append(album_names[album_count]) #append album name tracked via album_count
-            spotify_albums[album]['track_number'].append(tracks['items'][n]['track_number'])
-            spotify_albums[album]['id'].append(tracks['items'][n]['id'])
-            spotify_albums[album]['name'].append(tracks['items'][n]['name'])
-            spotify_albums[album]['uri'].append(tracks['items'][n]['uri'])
-
-spotify_albums = {}
-album_count = 0
-for i in album_uris: #each album
-    albumSongs(i)
-    print("Album " + str(album_names[album_count]) + " songs has been added to spotify_albums dictionary")
-    album_count+=1 #Updates album count once all tracks have been added
-
-def audio_features(album):
-    #Add new key-values to store audio features
-    spotify_albums[album]['acousticness'] = []
-    spotify_albums[album]['danceability'] = []
-    spotify_albums[album]['energy'] = []
-    spotify_albums[album]['instrumentalness'] = []
-    spotify_albums[album]['liveness'] = []
-    spotify_albums[album]['loudness'] = []
-    spotify_albums[album]['speechiness'] = []
-    spotify_albums[album]['tempo'] = []
-    spotify_albums[album]['valence'] = []
-    spotify_albums[album]['popularity'] = []
-    #create a track counter
-    track_count = 0
-    for track in spotify_albums[album]['uri']:
-        #pull audio features per track
-        features = sp.audio_features(track)
-        
-        #Append to relevant key-value
-        spotify_albums[album]['acousticness'].append(features[0]['acousticness'])
-        spotify_albums[album]['danceability'].append(features[0]['danceability'])
-        spotify_albums[album]['energy'].append(features[0]['energy'])
-        spotify_albums[album]['instrumentalness'].append(features[0]['instrumentalness'])
-        spotify_albums[album]['liveness'].append(features[0]['liveness'])
-        spotify_albums[album]['loudness'].append(features[0]['loudness'])
-        spotify_albums[album]['speechiness'].append(features[0]['speechiness'])
-        spotify_albums[album]['tempo'].append(features[0]['tempo'])
-        spotify_albums[album]['valence'].append(features[0]['valence'])
-        #popularity is stored elsewhere
-        pop = sp.track(track)
-        spotify_albums[album]['popularity'].append(pop['popularity'])
-        track_count+=1
-        
-        
-        
-import time
-import numpy as np
-sleep_min = 2
-sleep_max = 5
-start_time = time.time()
-request_count = 0
-for i in spotify_albums:
-    audio_features(i)
-    request_count+=1
-    if request_count % 5 == 0:
-        print(str(request_count) + " playlists completed")
-        time.sleep(np.random.uniform(sleep_min, sleep_max))
-        print('Loop #: {}'.format(request_count))
-        print('Elapsed Time: {} seconds'.format(time.time() - start_time))
-        
-        
-        
-dic_df = {}
-dic_df['album'] = []
-dic_df['track_number'] = []
-dic_df['id'] = []
-dic_df['name'] = []
-dic_df['uri'] = []
-dic_df['acousticness'] = []
-dic_df['danceability'] = []
-dic_df['energy'] = []
-dic_df['instrumentalness'] = []
-dic_df['liveness'] = []
-dic_df['loudness'] = []
-dic_df['speechiness'] = []
-dic_df['tempo'] = []
-dic_df['valence'] = []
-dic_df['popularity'] = []
-for album in spotify_albums: 
-    for feature in spotify_albums[album]:
-        dic_df[feature].extend(spotify_albums[album][feature])
-        
-        
-        
-import pandas as pd
-df = pd.DataFrame.from_dict(dic_df)
-df['artist'] = name
-print(df)
+if __name__ == "__main__":
+    df = main()
+    print(df)
