@@ -12,8 +12,8 @@ import time
 import numpy as np
 
 # Spotify credentials
-client_id= "93f9faed16c3424c84883c43cedc286d"
-client_secret= "ffaeec52b4424d2a87f2f2b7f9bee9ee"
+client_id= "c072b2d4abd840a6add05e568c9b37c0"
+client_secret= "39c4cde3bc0a4bada6c2afa77232efbd"
 
 
 # Authenticate with Spotify API
@@ -87,14 +87,13 @@ def get_tracks(item_name):
     return tracks
 
 # Main function to retrieve and compile data
-def main():
-    user_input = input("Enter an artist name or a playlist link: ")
+def main(user_input):
     all_tracks = get_tracks(user_input)
     df = pd.DataFrame(all_tracks)
     # Reorder columns
     df = df[["name", "artist", "album", "id", "danceability", "acousticness", "energy", "instrumentalness", "liveness", "valence", "loudness", "speechiness", "tempo"]]
-    return df
+    json_output = df.to_json(orient='records')
+    
+    return json_output
 
-if __name__ == "__main__":
-    df = main()
-    print(df)
+

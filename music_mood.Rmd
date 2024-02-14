@@ -167,6 +167,12 @@ confusion_matrix <- confusionMatrix(predictions, as.factor(Test$mood))
 print(confusion_matrix)
 
 ```
+```{r}
+log.fit = train(mood ~ ., method= "multinom", data = numeric_data, trControl = trainControl(method = "cv"))
+# Save the trained model
+saveRDS(log.fit, "trained_model.rds")
+
+```
 
 
 
