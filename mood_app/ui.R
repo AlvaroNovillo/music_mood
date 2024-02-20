@@ -3,8 +3,9 @@ library(flexdashboard)
 library(ggplot2)
 library(shinycssloaders)
 
-
+library(shinythemes)
 fluidPage(
+  theme = shinytheme("united"),
   titlePanel("Mood-Based Song Classifier"),
   sidebarLayout(
     sidebarPanel(

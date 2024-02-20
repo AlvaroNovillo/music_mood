@@ -1,0 +1,12 @@
+name: mood-based_song_classifier
+title: Mood-Based Song Classifier
+username: novillocorreasalvaro
+account: novillocorreasalvaro
+server: bookdown.org
+hostUrl: https://bookdown.org/__api__
+appId: 13760
+bundleId: 93753
+url: https://bookdown.org/novillocorreasalvaro/mood-based_song_classifier/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
