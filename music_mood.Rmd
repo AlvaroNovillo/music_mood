@@ -13,7 +13,7 @@ thanks: "Replication files are available on the author's Github account (https:/
 author:
 - name: Álvaro Novillo Correas
   affiliation: Universidad Carlos III
-abstract: "In this article, following a similar procedure to [@data1], we apply several machine learning techniques to classify songs into four different moods: energetic, happy, calm and sad. We then implement a Shiny app that uses Python to scrape data from Spotify, given an artist name or playlist URL, and perform an analysis of the different characteristics and emotions that the artist's discography or playlist has."
+abstract: "In this article, following a similar procedure to [@data1], we apply several Statistical Learning techniques to classify songs into four different moods: energetic, happy, calm and sad. We then implement a Shiny app that uses Python to scrape data from Spotify, given an artist name or playlist URL, and perform an analysis of the different characteristics and emotions that the artist's discography or playlist has."
 keywords: "pandoc, r markdown, knitr"
 date: "`r format(Sys.time(), '%B %d, %Y')`"
 geometry: margin=1in
@@ -81,7 +81,7 @@ head(music_data) %>%
 
 ```
 
-We will follow a systematic approach, using different machine learning algorithms to train a model that can accurately identify the mood of a song. We achieve this by utilizing key parameters such as danceability, acousticness, energy, instrumentalness, liveness, valence, loudness and speechiness, obtained directly from the [Spotify](https://open.spotify.com/intl-es) API [@spotifydeveloper]
+We will follow a systematic approach, using different Statistical Learning algorithms to train a model that can accurately identify the mood of a song. We achieve this by utilizing key parameters such as danceability, acousticness, energy, instrumentalness, liveness, valence, loudness and speechiness, obtained directly from the [Spotify](https://open.spotify.com/intl-es) API [@spotifydeveloper]
 
 After obtaining the best model possible, we will apply it in a basic Shiny app, where we've built a Python-based scraping algorithm to gather essential features and attributes of songs using Spotify API [@spotifydeveloper], allowing us to predict the corresponfing mood of each song, and analyze the data desired by the user.
 
