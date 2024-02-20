@@ -264,9 +264,11 @@ their emotional content.
 
 Building on previous research \citep{data1}, we will classify songs into
 four primary emotional categories: energetic, happy, calm, and sad. To
-achieve this, we'll leverage a dataset\footnote{1} of 686 previously
-classified songs and develop a robust model capable of discerning the
-encoded emotionality within musical compositions.
+achieve this, we'll leverage a dataset\footnote{The dataset used to
+  train our model can be found in
+  \href{https://www.kaggle.com/datasets/musicblogger/spotify-music-data-to-identify-the-moods}{Kaggle}}
+of 686 previously classified songs and develop a robust model capable of
+discerning the encoded emotionality within musical compositions.
 
 \begin{table}[!h]
 
@@ -716,14 +718,6 @@ Regression}\label{feature-selection-on-multinomial-linear-regression}}
 
 Lets apply BIC criterion to perform feature selection:
 
-\begin{verbatim}
-## Best model formula: ~ mood acousticness + energy + instrumentalness + liveness + valence + loudness
-\end{verbatim}
-
-\begin{verbatim}
-## BIC: 608.8062
-\end{verbatim}
-
 \begin{figure}[H]
 \includegraphics{figs/BIC} \caption{Evolution of BIC with Number of Predictors}\label{fig:BIC}
 \end{figure}
@@ -798,7 +792,7 @@ will be the following:
                      \AttributeTok{classProbs =} \ConstantTok{TRUE}\NormalTok{, }
                      \AttributeTok{verboseIter=}\ConstantTok{FALSE}\NormalTok{)}
 
-\NormalTok{log.fit }\OtherTok{=} \FunctionTok{train}\NormalTok{(mood }\SpecialCharTok{\textasciitilde{}}\NormalTok{ acousticness }\SpecialCharTok{+}\NormalTok{ energy }\SpecialCharTok{+}\NormalTok{ instrumentalness }\SpecialCharTok{+}\NormalTok{ liveness }\SpecialCharTok{+}\NormalTok{ valence }\SpecialCharTok{+}\NormalTok{ loudness, }
+\NormalTok{log.fit }\OtherTok{=} \FunctionTok{train}\NormalTok{(best\_model}\SpecialCharTok{$}\NormalTok{formula, }
                \AttributeTok{method =} \StringTok{"multinom"}\NormalTok{,}
                \AttributeTok{metric =} \StringTok{"Kappa"}\NormalTok{,}
                \AttributeTok{data =}\NormalTok{ numeric\_data,}
@@ -826,8 +820,20 @@ required sample size for accurate classification compared to KNN.
 \hypertarget{shiny-app}{%
 \section{Shiny app}\label{shiny-app}}
 
-\hypertarget{references}{%
-\section{References}\label{references}}
+Now, we can feed our final model to the Shiny app we have built for the
+user to analyse their playlist and favourite artist. Unfortunately, I
+have not been able to deploy it on the web yet. The app is located
+inside the `mood\_app' folder on my
+\href{https://github.com/AlvaroNovillo/music_mood}{GitHub page.}
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.5\linewidth,]{figs/shiny} 
+
+}
+
+\caption{Screenshot of the Shiny app.}\label{fig:shiny}
+\end{figure}
 
 \setlength{\parindent}{-0.2in}
 \setlength{\leftskip}{0.2in}

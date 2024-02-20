@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.10.12) (preloaded format=pdflatex 2023.11.7)  20 FEB 2024 11:25
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.10.12) (preloaded format=pdflatex 2023.11.7)  20 FEB 2024 12:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -687,25 +687,25 @@ pdfTeX warning (ext4): destination with the same identifier (name{table.1}) has
  been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.315 
+l.317 
       ]
-<figs/features.pdf, id=72, 469.755pt x 325.215pt>
+<figs/features.pdf, id=69, 469.755pt x 325.215pt>
 File: figs/features.pdf Graphic file (type pdf)
 <use figs/features.pdf>
-Package pdftex.def Info: figs/features.pdf  used on input line 317.
+Package pdftex.def Info: figs/features.pdf  used on input line 319.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 317--317
+Underfull \hbox (badness 10000) in paragraph at lines 319--319
 [][]
  []
 
-<figs/cor.pdf, id=75, 469.755pt x 325.215pt>
+<figs/cor.pdf, id=72, 469.755pt x 325.215pt>
 File: figs/cor.pdf Graphic file (type pdf)
 <use figs/cor.pdf>
-Package pdftex.def Info: figs/cor.pdf  used on input line 327.
+Package pdftex.def Info: figs/cor.pdf  used on input line 329.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 327--327
+Underfull \hbox (badness 10000) in paragraph at lines 329--329
 [][]
  []
 
@@ -714,15 +714,15 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.329 
+l.331 
        <./figs/features.pdf>]
-<figs/count.pdf, id=93, 469.755pt x 325.215pt>
+<figs/count.pdf, id=90, 469.755pt x 325.215pt>
 File: figs/count.pdf Graphic file (type pdf)
 <use figs/count.pdf>
-Package pdftex.def Info: figs/count.pdf  used on input line 335.
+Package pdftex.def Info: figs/count.pdf  used on input line 337.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 335--335
+Underfull \hbox (badness 10000) in paragraph at lines 337--337
 [][]
  []
 
@@ -731,15 +731,15 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.337 
+l.339 
        <./figs/cor.pdf>]
-<figs/radar.pdf, id=106, 469.755pt x 325.215pt>
+<figs/radar.pdf, id=103, 469.755pt x 325.215pt>
 File: figs/radar.pdf Graphic file (type pdf)
 <use figs/radar.pdf>
-Package pdftex.def Info: figs/radar.pdf  used on input line 346.
+Package pdftex.def Info: figs/radar.pdf  used on input line 348.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 346--346
+Underfull \hbox (badness 10000) in paragraph at lines 348--348
 [][]
  []
 
@@ -748,14 +748,14 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.348 
+l.350 
        <./figs/count.pdf>]
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 3
-61.
+63.
 (C:\Users\pc\AppData\Local\Programs\MiKTeX\tex/latex/base\t1cmtt.fd
 File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 )
-Overfull \hbox (1.4602pt too wide) in paragraph at lines 352--364
+Overfull \hbox (1.4602pt too wide) in paragraph at lines 354--366
 \T1/ppl/m/n/10.95 `dance-abil-ity', `acous-tic-ness', `en-ergy', `in-stru-men-t
 al-ness', `live-ness', `va-lence', `loud-ness', `speech-
  []
@@ -765,60 +765,55 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.4}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.392 \end{verbatim}
+l.394 \end{verbatim}
                      <./figs/radar.pdf>] [6] [7
 pdfTeX warning (ext4): destination with the same identifier (name{table.2}) has
  been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.542 \end{verbatim}
+l.544 \end{verbatim}
                     
 pdfTeX warning (ext4): destination with the same identifier (name{table.3}) has
  been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.542 \end{verbatim}
+l.544 \end{verbatim}
                     
 pdfTeX warning (ext4): destination with the same identifier (name{table.4}) has
  been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.542 \end{verbatim}
+l.544 \end{verbatim}
                     ] [8] [9]
-<figs/resamp.pdf, id=170, 469.755pt x 325.215pt>
+<figs/resamp.pdf, id=167, 469.755pt x 325.215pt>
 File: figs/resamp.pdf Graphic file (type pdf)
 <use figs/resamp.pdf>
-Package pdftex.def Info: figs/resamp.pdf  used on input line 670.
+Package pdftex.def Info: figs/resamp.pdf  used on input line 672.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 670--670
+Underfull \hbox (badness 10000) in paragraph at lines 672--672
 [][]
  []
 
-[10] [11
+[10]
+<figs/BIC.pdf, id=173, 469.755pt x 325.215pt>
+File: figs/BIC.pdf Graphic file (type pdf)
+<use figs/BIC.pdf>
+Package pdftex.def Info: figs/BIC.pdf  used on input line 722.
+(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 722--722
+[][]
+ []
+
+[11
 pdfTeX warning (ext4): destination with the same identifier (name{figure.5}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.719 \begin{verbatim}
-                       <./figs/resamp.pdf>]
-Overfull \hbox (107.39882pt too wide) in paragraph at lines 721--721
-[]\T1/cmtt/m/n/10.95 ## Best model formula: ~ mood acousticness + energy + inst
-rumentalness + liveness + valence + loudness[] 
- []
-
-<figs/BIC.pdf, id=190, 469.755pt x 325.215pt>
-File: figs/BIC.pdf Graphic file (type pdf)
-<use figs/BIC.pdf>
-Package pdftex.def Info: figs/BIC.pdf  used on input line 728.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 728--728
-[][]
- []
-
-
-Overfull \hbox (40.2443pt too wide) in paragraph at lines 731--734
+l.723 \end{figure}
+                   <./figs/resamp.pdf>]
+Overfull \hbox (40.2443pt too wide) in paragraph at lines 725--728
 []\T1/ppl/m/n/10.95 The best model found, based in BIC cri-te-rion, is \T1/cmtt
 /m/n/10.95 mood ~ acousticness + energy + instrumentalness
  []
@@ -828,30 +823,41 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.6}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.754 \end{verbatim}
+l.748 \end{verbatim}
                      <./figs/BIC.pdf>]
 
-Package xcolor Warning: Incompatible color definition on input line 795.
+Package xcolor Warning: Incompatible color definition on input line 789.
 
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 797.
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 791.
 
-Package xcolor Warning: Incompatible color definition on input line 811.
-
-
-Package xcolor Warning: Incompatible color definition on input line 811.
+Package xcolor Warning: Incompatible color definition on input line 805.
 
 
-Package xcolor Warning: Incompatible color definition on input line 811.
+Package xcolor Warning: Incompatible color definition on input line 805.
+
+
+Package xcolor Warning: Incompatible color definition on input line 805.
 
 [13]
 
-Package xcolor Warning: Incompatible color definition on input line 811.
+Package xcolor Warning: Incompatible color definition on input line 805.
 
 
-Package xcolor Warning: Incompatible color definition on input line 811.
+Package xcolor Warning: Incompatible color definition on input line 805.
 
-[14] (music_mood.bbl) [15] (music_mood.aux)
+<figs/shiny.jpg, id=204, 652.68843pt x 650.43pt>
+File: figs/shiny.jpg Graphic file (type jpg)
+<use figs/shiny.jpg>
+Package pdftex.def Info: figs/shiny.jpg  used on input line 831.
+(pdftex.def)             Requested size: 234.8775pt x 234.06529pt.
+[14
+pdfTeX warning (ext4): destination with the same identifier (name{figure.7}) ha
+s been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.849 \newpage
+               <./figs/shiny.jpg>] (music_mood.bbl) [15] (music_mood.aux)
  ***********
 LaTeX2e <2023-11-01>
 L3 programming layer <2023-11-01>
@@ -860,13 +866,13 @@ L3 programming layer <2023-11-01>
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `music_mood.out' has not changed.
-(rerunfilecheck)             Checksum: 23F457697E7EA962EBF847FB90DC770D;1769.
+(rerunfilecheck)             Checksum: 396FA012A1812CB03E0A23726FECB571;1673.
  ) 
 Here is how much of TeX's memory you used:
- 14355 strings out of 474592
- 221112 string characters out of 5747215
- 1952533 words of memory out of 5000000
- 36200 multiletter control sequences out of 15000+600000
+ 14366 strings out of 474592
+ 221343 string characters out of 5747215
+ 1953533 words of memory out of 5000000
+ 36212 multiletter control sequences out of 15000+600000
  602485 words of font info for 136 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,10n,79p,506b,592s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -880,9 +886,9 @@ w/helvetic/uhvb8a.pfb><C:/Users/pc/AppData/Local/Programs/MiKTeX/fonts/type1/ur
 w/palatino/uplb8a.pfb><C:/Users/pc/AppData/Local/Programs/MiKTeX/fonts/type1/ur
 w/palatino/uplr8a.pfb><C:/Users/pc/AppData/Local/Programs/MiKTeX/fonts/type1/ur
 w/palatino/uplri8a.pfb>
-Output written on music_mood.pdf (15 pages, 2889473 bytes).
+Output written on music_mood.pdf (15 pages, 2960784 bytes).
 PDF statistics:
  356 PDF objects out of 1000 (max. 8388607)
- 51 named destinations out of 1000 (max. 500000)
- 111 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 50 named destinations out of 1000 (max. 500000)
+ 108 words of extra memory for PDF output out of 10000 (max. 10000000)
 

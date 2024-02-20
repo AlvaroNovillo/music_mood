@@ -427,9 +427,6 @@ bics <- sapply(models, function(x) BIC(x$model$finalModel))
 best_model_index <- which.min(bics)
 best_model <- models[[best_model_index]]
 
-# Print the best model and its BIC
-cat("Best model formula:", as.character(best_model$formula), "\n")
-cat("BIC:", bics[best_model_index], "\n")
 
 ```
 
@@ -478,7 +475,7 @@ ctrl <- trainControl(method = "cv", number = 5,
                      classProbs = TRUE, 
                      verboseIter=FALSE)
 
-log.fit = train(mood ~ acousticness + energy + instrumentalness + liveness + valence + loudness, 
+log.fit = train(best_model$formula, 
                method = "multinom",
                metric = "Kappa",
                data = numeric_data,
@@ -504,9 +501,9 @@ compared to KNN.
 
 # Shiny app
 
-Now, we can feed our final model to the Shiny app we've build for the user to analyse their playlist and favorite artist! 
+Now, we can feed our final model to the Shiny app we have built for the user to analyse their playlist and favourite artist. Unfortunately, I have not been able to deploy it on the web yet. The app is located inside the 'mood_app' folder on my [GitHub page.](https://github.com/AlvaroNovillo/music_mood)
 
-```{r shiny, out.width='80%', fig.align='center', fig.cap= "Screenshot of the Shiny app.",echo = FALSE}
+```{r shiny, out.width='50%', fig.align='center', fig.cap= "Screenshot of the Shiny app.",echo = FALSE}
 knitr::include_graphics("figs/shiny.jpg")
 ```
 
@@ -514,7 +511,6 @@ knitr::include_graphics("figs/shiny.jpg")
 [^1]: The dataset used to train our model can be found in [Kaggle](https://www.kaggle.com/datasets/musicblogger/spotify-music-data-to-identify-the-moods)
 
 
-# References
 \setlength{\parindent}{-0.2in}
 \setlength{\leftskip}{0.2in}
 \setlength{\parskip}{8pt}
